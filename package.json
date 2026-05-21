@@ -1,0 +1,23 @@
+{
+  "name": "node-express-js-tutorials",
+  "version": "1.0.0",
+  "description": "> Personal reference notes covering Node.js built-in modules, globals, and NPM — with examples for every method. Interview-ready.",
+  "homepage": "https://github.com/VigneshwaranT-Dev/Node---Express-Tutorials#readme",
+  "bugs": {
+    "url": "https://github.com/VigneshwaranT-Dev/Node---Express-Tutorials/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VigneshwaranT-Dev/Node---Express-Tutorials.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^4.18.1"
+  }
+}

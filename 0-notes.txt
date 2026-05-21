@@ -547,3 +547,182 @@ To create servers and make HTTP requests (MOST IMPORTANT one)
         500 → Internal Server Error
 
 ================================================================================
+
+--------------------------------------------------------------------------------
+
+NPM (Node Package Manager)
+Manages packages/libraries for your Node.js project.
+
+  ---- INITIALIZING A PROJECT ----
+
+  1. npm init
+     - Creates a package.json by asking questions step by step.
+     Example:
+        npm init
+        // Asks: package name, version, description, entry point, etc.
+
+  2. npm init -y
+     - Creates a package.json instantly with default values. (Recommended)
+     Example:
+        npm init -y
+        // → Creates package.json with all defaults, no questions asked.
+
+  ---- INSTALLING PACKAGES ----
+
+  3. npm install <package>  (shorthand: npm i <package>)
+     - Installs a package locally into node_modules.
+     - Adds it under "dependencies" in package.json.
+     - Used for packages needed in production.
+     Example:
+        npm install express
+        npm i express          // shorthand
+
+  4. npm install <package> --save-dev  (shorthand: npm i <package> -D)
+     - Installs a package as a Dev Dependency.
+     - Adds it under "devDependencies" in package.json.
+     - Used for packages only needed during development (not in production).
+     Example:
+        npm install nodemon --save-dev
+        npm i nodemon -D       // shorthand
+
+  5. npm install -g <package>
+     - Installs a package globally on your machine (not just this project).
+     - Available as a command anywhere on your system.
+     Example:
+        npm install -g nodemon
+        npm install -g typescript
+
+  6. npm install  (no package name)
+     - Installs ALL packages listed in package.json.
+     - Used when cloning a project (node_modules not included in git).
+     Example:
+        npm install
+        // → Reads package.json and installs everything listed
+
+  ---- UNINSTALLING PACKAGES ----
+
+  7. npm uninstall <package>  (shorthand: npm un <package>)
+     - Removes a package from node_modules and package.json.
+     Example:
+        npm uninstall express
+        npm un express         // shorthand
+
+  ---- RUNNING SCRIPTS ----
+
+  8. npm run <script>
+     - Runs a custom script defined in package.json under "scripts".
+     Example:
+        // In package.json:
+        "scripts": {
+          "start": "node index.js",
+          "dev":   "nodemon index.js",
+          "test":  "jest"
+        }
+        npm run dev    // → runs nodemon index.js
+        npm run test   // → runs jest
+
+  9. npm start
+     - Shortcut for running the "start" script in package.json.
+     - No need to type "run".
+     Example:
+        npm start  // → runs "node index.js" (whatever is in "start" script)
+
+  ---- USEFUL COMMANDS ----
+
+  10. npm list
+      - Shows all installed packages and their versions in current project.
+      Example:
+         npm list
+         // → project@1.0.0
+         //   ├── express@4.18.2
+         //   └── nodemon@3.0.1
+
+  11. npm outdated
+      - Shows which packages have newer versions available.
+      Example:
+         npm outdated
+         // → Package   Current   Wanted   Latest
+         //   express   4.18.0    4.18.2   4.18.2
+
+  12. npm update
+      - Updates all packages to their latest allowed version (based on package.json rules).
+      Example:
+         npm update
+         npm update express   // update specific package
+
+  13. npm audit
+      - Checks for security vulnerabilities in installed packages.
+      Example:
+         npm audit
+         npm audit fix        // automatically fix vulnerabilities
+
+  14. npx <package>
+      - Runs a package without installing it globally.
+      - Great for one-time use tools.
+      Example:
+         npx create-react-app my-app
+         npx nodemon index.js
+
+--------------------------------------------------------------------------------
+
+  PACKAGE.JSON — KEY FIELDS:
+
+     {
+       "name": "my-project",          // Project name
+       "version": "1.0.0",            // Project version
+       "main": "index.js",            // Entry point of the app
+       "scripts": {                   // Commands you can run with npm run
+         "start": "node index.js",
+         "dev": "nodemon index.js"
+       },
+       "dependencies": {              // Packages needed in production
+         "express": "^4.18.2"
+       },
+       "devDependencies": {           // Packages only needed in development
+         "nodemon": "^3.0.1"
+       }
+     }
+
+--------------------------------------------------------------------------------
+
+  DEPENDENCIES vs DEVDEPENDENCIES — INTERVIEW POINT:
+
+     dependencies    → Needed for the app to RUN in production.
+                        Example: express, mongoose, dotenv
+
+     devDependencies → Only needed during DEVELOPMENT. Not shipped to production.
+                        Example: nodemon, jest, eslint, typescript
+
+--------------------------------------------------------------------------------
+
+  SEMANTIC VERSIONING (SemVer) — INTERVIEW POINT:
+
+     Version format → MAJOR.MINOR.PATCH  (Example: 4.18.2)
+
+     MAJOR → Breaking changes. Existing code may break.
+     MINOR → New features added. Backward compatible.
+     PATCH → Bug fixes only. Backward compatible.
+
+     Symbols in package.json:
+     "^4.18.2" → Caret  → Allows MINOR and PATCH updates. (4.x.x)  ← Default
+     "~4.18.2" → Tilde  → Allows only PATCH updates.      (4.18.x)
+     "4.18.2"  → Exact  → Installs exactly this version.  No updates.
+
+--------------------------------------------------------------------------------
+
+  NODE_MODULES & PACKAGE-LOCK.JSON — INTERVIEW POINT:
+
+     node_modules/
+     - Folder where all installed packages are stored.
+     - NEVER push to git. Add to .gitignore.
+     - Anyone can recreate it with "npm install".
+
+     package-lock.json
+     - Auto-generated by npm.
+     - Locks the EXACT version of every installed package.
+     - ALWAYS push to git — ensures everyone on the team gets same versions.
+
+     .gitignore — always add:
+        node_modules/
+
+================================================================================
