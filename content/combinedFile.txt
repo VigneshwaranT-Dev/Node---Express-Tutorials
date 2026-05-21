@@ -1,0 +1,4 @@
+This is the combined file from test1 and test2 files the result is: 
+This section is from fs module., 
+Hi Welcome to learn Node & Express JS !!!
+Lets Master the Node & Express JS.
